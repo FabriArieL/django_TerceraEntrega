@@ -1,3 +1,4 @@
+Loroño Fabrizio Tercer_Entrega
 Este proyecto es una aplicación web desarrollada en Django como parte de la Tercera Entrega de Python. La aplicación incluye funcionalidades como la creación, gestión y visualización de datos relacionados con "la gestión de celulares".
 
 Características
