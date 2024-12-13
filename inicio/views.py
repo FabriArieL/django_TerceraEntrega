@@ -4,48 +4,42 @@ from django.http import HttpResponse
 from django.template import Template, Context, loader
 from inicio.models import Celular
 import random
+from inicio.forms import CrearCelular, BuscarCelular
 
 
 def inicio(resquest):
     return render(resquest, "inicio/inicio.html")
 def bienvenida(request):
     return render(request, "inicio/bienvenida.html")
+    
+def crear_celular (request):
+    print(request)
+    print(request.GET)
+    print(request.POST)
+    
+    formulario = CrearCelular()
+    
+    if request.method == "POST":
+        formulario = CrearCelular(request.POST)
+        if formulario.is_valid():
+            
+            data = formulario.cleaned_data
+            celular = Celular(marca=data.get("marca"),modelo=data.get("modelo"),anio=data.get("anio"))
+            celular.save()
+            
+            return render(request,"inicio/inicio.html")
+    
+    return render(request, "inicio/crear_celular.html",{"formulario": formulario})
 
-def mi_template(request):
+def listado_celulares(request):
     
-    # archivo_abierto = open("templates\mi_template.html")
-    # template = Template(archivo_abierto.read())
-    # archivo_abierto.close()
+    formulario_busqueda = BuscarCelular(request.GET)
     
-    # contexto = Context({"nombre": "Pepe"})
-    # template_renderizado = template.render(contexto)
+    if formulario_busqueda.is_valid():
+        marca_a_buscar = formulario_busqueda.cleaned_data.get("marca")
+        modelo_a_buscar = formulario_busqueda.cleaned_data.get("modelo")
+        resultado_celulares = Celular.objects.filter(marca__icontains=marca_a_buscar, modelo__icontains=modelo_a_buscar)
+    else:
+        resultado_celulares = []
     
-    # return HttpResponse(template_renderizado) 
-
-    return render(request, "inicio/mi_template.html",{"nombre": "Pepe"})
-
-def mi_template2(request):
-    
-    # template = loader.get_template("mi_template2.html")
-    
-    # diccionario = {"nombre": "Pepe"}
-    
-    # template_renderizado = template.render(diccionario)
-    
-    # return HttpResponse(template_renderizado) 
-    return render(request, "inicio/mi_template2.html")
-
-def condicional_y_bucles(request):
-    
-    return render(request, 'inicio/condicionales_y_bucles.html', {
-        'nombre': 'Ricardo',
-        'mis_elementos': [],
-        'numero': 2,
-        'numeros': list(range(15))
-    })
-    
-def crear_celular(request, marca, modelo, anio):
-    # celular = Celular(marca = random.choice(["Motorola","Samsung", "Xiaomi", "Iphone", "Huawei"]), modelo = "Generico", anio = random.choice([2018,2019,2020,2021,2022]))
-    celular = Celular(marca = marca, modelo = modelo, anio = anio)
-    celular.save()
-    return render(request, "inicio/celular_creacion_correcta.html",{"celular": celular})
+    return render(request, "inicio/listado_celulares.html",{"listado_celulares": resultado_celulares, "formulario": formulario_busqueda})

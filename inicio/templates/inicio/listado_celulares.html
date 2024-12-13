@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Celulares
+{% endblock title_head %}
+
+{% block h1_header %}
+Listado de Celulares
+{% endblock h1_header %}
+
+{% block main %}
+<p>
+    <form action={% url "inicio:listado_celulares" %}> 
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    
+    </form>
+</p>
+
+{% if listado_celulares %}
+<ul>
+    {% for celular in listado_celulares %}
+        <li>
+            {{celular}}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encuentran celulares</p>
+{% endif %}
+
+{% endblock main %}
