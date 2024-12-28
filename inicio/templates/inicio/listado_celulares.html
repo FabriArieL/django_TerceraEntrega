@@ -9,6 +9,8 @@ Listado de Celulares
 {% endblock h1_header %}
 
 {% block main %}
+
+<a href={% url "inicio:crear_celular" %}>Crear Celular</a>
 <p>
     <form action={% url "inicio:listado_celulares" %}> 
         {{formulario}}
@@ -21,7 +23,11 @@ Listado de Celulares
 <ul>
     {% for celular in listado_celulares %}
         <li>
-            {{celular}}
+            {{celular}} 
+            | <a href="{% url "inicio:ver_celular" celular.id%}">Ver</a>
+            | <a href="{% url "inicio:editar_celular" celular.id%}">Editar</a>
+            | <a href="{% url "inicio:eliminar_celular" celular.id%}">Eliminar</a>
+
         </li>
     {% endfor %}
 </ul>

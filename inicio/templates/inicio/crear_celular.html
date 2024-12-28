@@ -9,6 +9,9 @@ Crear celular
 {% endblock h1_header %}
 
 {% block main %}
+
+<a href={% url "inicio:listado_celulares" %}>Listado Celulares</a>
+
 <form action="{% url "inicio:crear_celular" %}" method="post">
     {% csrf_token %}
     {{formulario}}
