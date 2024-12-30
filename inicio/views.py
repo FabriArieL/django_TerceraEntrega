@@ -5,6 +5,7 @@ from django.template import Template, Context, loader
 from inicio.models import Celular
 import random
 from inicio.forms import CrearCelular, BuscarCelular, EditaCelular
+from django.contrib.auth.decorators import login_required
 
 
 def inicio(resquest):
@@ -48,12 +49,14 @@ def ver_celular(request, id_celular):
     celular = Celular.objects.get(id=id_celular)
     return render(request, "inicio/ver_celular.html", {"celular": celular})
 
+@login_required
 def eliminar_celular(request, id_celular):
     celular = Celular.objects.get(id=id_celular)
     
     celular.delete()
     return render(request, "inicio/eliminar_celular.html", {"celular": celular})
 
+@login_required
 def editar_celular(request, id_celular):
     celular = Celular.objects.get(id=id_celular)
     

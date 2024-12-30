@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Moto
+{% endblock title_head %}
+
+
+
+{% block h1_header %}{{moto}}{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li>Marca: {{moto.marca}}</li>
+    <li>Modelo: {{moto.modelo}}</li>
+    <li>Anio: {{moto.anio}}</li>
+</ul>
+{% endblock main %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+Eliminar Moto
+{% endblock title_head %}
+
+
+{% block h1_header %} Eliminar Motos{% endblock h1_header %}
+{% block main %}
+<form action="{% url "productos:eliminar_moto" moto.id %}" method="post">
+    {% csrf_token %}
+
+    <p>
+        Estas seguro que queres eliminar a {{moto}}???
+    </p>
+
+    <input type="submit" value="Confirmar Borrado">
+
+</form>
+{% endblock main %}
+

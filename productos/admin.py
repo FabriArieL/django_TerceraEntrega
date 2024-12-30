@@ -1,5 +1,5 @@
 from django.contrib import admin
-from productos.models import Paleta
+from productos.models import Moto
 
 
-admin.site.register(Paleta)
+admin.site.register(Moto)
