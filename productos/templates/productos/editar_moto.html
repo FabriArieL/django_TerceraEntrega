@@ -7,7 +7,7 @@ Editar Moto
 {% block h1_header %}Editar Moto{% endblock h1_header %}
 
 {% block main %}
-<form action="{% url "productos:editar_moto" moto.id %}" method="post">
+<form action="{% url "productos:editar_moto" moto.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Editar">
