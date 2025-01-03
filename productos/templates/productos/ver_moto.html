@@ -14,6 +14,7 @@ Moto
     <li>Marca: {{moto.marca}}</li>
     <li>Modelo: {{moto.modelo}}</li>
     <li>Anio: {{moto.anio}}</li>
-    <li>Imagen: <img src="{{moto.imagen.url}}" alt="Imagen de la moto" height="200px"></li>
+    {% if moto.imagen %}<li>Imagen: <img src={{moto.imagen.url}} alt="Imagen de la moto" height="200px"></li>{% endif %}
+    
 </ul>
 {% endblock main %}

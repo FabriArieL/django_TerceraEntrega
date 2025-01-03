@@ -12,6 +12,9 @@ def inicio(resquest):
     return render(resquest, "inicio/inicio.html")
 def bienvenida(request):
     return render(request, "inicio/bienvenida.html")
+
+def sobre_mi(resquest):
+    return render(resquest, "inicio/sobre_mi.html")
     
 def crear_celular (request):
     print(request)

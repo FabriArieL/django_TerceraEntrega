@@ -11,13 +11,6 @@ Listado de Motos
 {% block main %}
 
 <a href={% url "productos:crear_moto" %}>Crear Moto</a>
-{% comment %} <p>
-    <form action={% url "inicio:listado_celulares" %}> 
-        {{formulario}}
-        <input type="submit" value="Buscar">
-    
-    </form> {% endcomment %}
-
 
 {% if listado_motos %}
 <ul>
