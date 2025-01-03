@@ -50,6 +50,7 @@ django_TerceraEntrega/
 └── requirements.txt    # Dependencias del proyecto
 
 Mejoras para la EntregaFinal
+
 Los requerimientos fueron actualizados
 
 Requerimientos
@@ -60,8 +61,10 @@ Requerimientos
     sqlparse==0.5.3
     tzdata==2024.2
 
-Agregamos a la app motos(con la posibilidad de crearlas, ver sobre ellas, editar sus datos, y eliminarlas), 
+Agregamos a la app motos(con la posibilidad de crearlas, ver sobre ellas, editar sus datos, y eliminarlas),
+
 usuarios(ahora solo podemos editar y eliminar celulares o motos, iniciando sesion en un usuario existente, o podemos crear uno nuevo, tambien podemos editarlo, ponerle un avatar x ej, y cambiarle la contraseña)
+
 y un sistema de mensajería(contamos con un apartado nuevo que aparece una vez iniciamos sesion con un usuario, con este apartado podemos elegir a otro usuario al cual mandarle un mensaje, tambien podemos ver el contenido, la fecha, como el emisor y receptor, tanto desde el usuario que mando el mensaje como el que lo recibió)
 
 Estructura del proyecto actualizada
@@ -94,3 +97,5 @@ django_TerceraEntrega/
 ├── db.sqlite3          # Base de datos SQLite
 ├── manage.py           # Herramienta de gestión Django
 └── requirements.txt    # Dependencias del proyecto
+
+Video del proyecto en funcionamiento: https://www.youtube.com/watch?v=ad-n_SF3zbo
